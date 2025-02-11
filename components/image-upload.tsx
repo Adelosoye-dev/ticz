@@ -1,0 +1,84 @@
+"use client"
+
+import { useState, useCallback } from "react"
+import { useDropzone } from "react-dropzone"
+import { ImageIcon } from "lucide-react"
+
+interface ImageUploadProps {
+  onImageUpload: (url: string) => void
+  value?: string
+}
+
+export function ImageUpload({ onImageUpload, value }: ImageUploadProps) {
+  const [preview, setPreview] = useState<string | null>(value || null)
+  const [isUploading, setIsUploading] = useState(false)
+
+  const onDrop = useCallback(
+    async (acceptedFiles: File[]) => {
+      const file = acceptedFiles[0]
+      if (!file) return
+
+      // Create a preview
+      const objectUrl = URL.createObjectURL(file)
+      setPreview(objectUrl)
+      setIsUploading(true)
+
+      try {
+        // Simulate upload to image hosting service
+        // In a real app, you would upload to Cloudinary or similar
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        onImageUpload(objectUrl)
+      } catch (error) {
+        console.error("Upload failed:", error)
+      } finally {
+        setIsUploading(false)
+      }
+    },
+    [onImageUpload],
+  )
+
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: {
+      "image/*": [".png", ".jpg", ".jpeg", ".gif"],
+    },
+    maxFiles: 1,
+  })
+
+  return (
+    <div
+      {...getRootProps()}
+      className={`
+        relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer
+        transition-colors duration-200 ease-in-out
+        ${isDragActive ? "border-primary bg-primary/10" : "border-muted"}
+        ${isUploading ? "opacity-50" : ""}
+      `}
+    >
+      <input {...getInputProps()} />
+      {preview ? (
+        <div className="relative w-32 h-32 mx-auto">
+          <img src={preview || "/placeholder.svg"} alt="Preview" className="w-full h-full object-cover rounded-lg" />
+        </div>
+      ) : (
+        <div className="space-y-4">
+          <div className="w-16 h-16 mx-auto rounded-full bg-muted flex items-center justify-center">
+            <ImageIcon className="w-8 h-8 text-muted-foreground" />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm font-medium">
+              {isDragActive ? "Drop your image here" : "Drag & drop your profile photo"}
+            </p>
+            <p className="text-xs text-muted-foreground">or click to select a file</p>
+          </div>
+        </div>
+      )}
+      {isUploading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-background/50 rounded-lg">
+          <div className="animate-spin rounded-full h-8 w-8 border-2 border-primary border-t-transparent" />
+        </div>
+      )}
+    </div>
+  )
+}
+

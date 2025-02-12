@@ -17,31 +17,37 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
   const [ticketType, setTicketType] = useState<TicketFormData["ticketType"]>("free")
 
   const tickets = [
-    { type: "free" as const, price: "Free", title: "BASIC ACCESS", description: "Basic event access" },
-    { type: "vip" as const, price: "$150", title: "VIP ACCESS", description: "VIP event access" },
-    { type: "vip-access" as const, price: "$150", title: "VIP+ ACCESS", description: "VIP+ event access" },
+    { type: "free" as const, price: "Free", title: "REGULAR ACCESS", description: "20/52" },
+    { type: "vip" as const, price: "$150", title: "VIP ACCESS", description: "20/52" },
+    { type: "vip-access" as const, price: "$150", title: "VVIP ACCESS", description: "20/52" },
   ]
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <ProgressBar currentStep={1} totalSteps={3} />
-      <div className="text-center my-8">
+    <div className="max-w-2xl mx-auto p-12 border border-[#197686] rounded-2xl">
+     <div className="mb-8">
+      <div className="text-centerflex flex justify-between items-center">
         <h1 className="text-4xl font-bold mb-2">Ticket Selection</h1>
         <p className="text-xl text-muted-foreground">Step 1/3</p>
       </div>
-      <Card className="bg-card border-border">
+      <ProgressBar currentStep={1} totalSteps={3} />
+      </div>
+      <Card className="bg-card border-[#197686] border">
         <CardContent className="p-6">
-          <div className="text-center mb-8">
+          <div className="border-[#197686] text-center mb-8 bg-[radial-gradient(57.42%_106.59%_at_14.02%_32.06%,rgba(36,160,181,0.20)_0%,rgba(36,160,181,0.00)_100%),rgba(10,12,17,0.10)] p-4 rounded-2xl border">
             <h2 className="text-2xl font-bold mb-2">Techember Fest &apos;25</h2>
-            <p className="text-sm text-muted-foreground">Join us for an amazing experience</p>
-            <p className="text-sm text-muted-foreground mt-1">March 1, 2025 • 9:00 AM</p>
+            <p className="text-sm text-muted-foreground">Join us for an unforgettable experience</p>
+            <p className="text-sm text-muted-foreground mt-1">TekVibez! Secure your spot now.</p>
+            <p className="text-sm text-muted-foreground mt-1">shomolu || March 1, 2025 | 7:00 AM</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div className="h-[2px] bg-[#197686] w-full my-8"></div>
+          <h3 className="text-xl font-bold mb-4">Select Ticket Type:</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 border-[#197686] p-4 rounded-2xl border">
+    
             {tickets.map((ticket) => (
               <Button
                 key={ticket.type}
                 variant={ticketType === ticket.type ? "default" : "outline"}
-                className="h-auto p-6 flex flex-col gap-2"
+                className="h-auto p-6 flex flex-col gap-2 rounded-2xl border border-[#197686]"
                 onClick={() => setTicketType(ticket.type)}
               >
                 <span className="text-xl font-bold">{ticket.price}</span>
@@ -62,18 +68,15 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
                 className="mt-1"
               />
             </div>
-            <div>
-              <Label htmlFor="promoCode">Promo Code</Label>
-              <Input id="promoCode" type="text" placeholder="Enter promo code" className="mt-1" />
-            </div>
-            <div>
-              <Label htmlFor="referralCode">Referral Code</Label>
-              <Input id="referralCode" type="text" placeholder="Enter referral code" className="mt-1" />
-            </div>
           </div>
-          <Button onClick={() => onNext(ticketType, quantity)} className="w-full mt-6">
+          <div className="mt-6 flex justify-between gap-4">
+          <Button className="hover:text-white w-full mt-6 bg-transparent border border-[#197686] text-[#197686]" onClick={() => setTicketType("free")}>
+            cancel
+          </Button>
+          <Button onClick={() => onNext(ticketType, quantity)} className="w-full mt-6 text-white">
             Next
           </Button>
+          </div>
         </CardContent>
       </Card>
     </div>

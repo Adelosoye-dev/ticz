@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react"
 import { useDropzone } from "react-dropzone"
 import { ImageIcon } from "lucide-react"
+import Image from "next/image"
 
 interface ImageUploadProps {
   onImageUpload: (url: string) => void
@@ -49,8 +50,8 @@ export function ImageUpload({ onImageUpload, value }: ImageUploadProps) {
     <div
       {...getRootProps()}
       className={`
-        relative border-2 border-dashed rounded-lg p-8 text-center cursor-pointer
-        transition-colors duration-200 ease-in-out
+        h-[200px] p-8 text-center cursor-pointer
+        transition-colors duration-200 ease-in-out bg-[#000000]
         ${isDragActive ? "border-primary bg-primary/10" : "border-muted"}
         ${isUploading ? "opacity-50" : ""}
       `}
@@ -58,10 +59,10 @@ export function ImageUpload({ onImageUpload, value }: ImageUploadProps) {
       <input {...getInputProps()} />
       {preview ? (
         <div className="relative w-32 h-32 mx-auto">
-          <img src={preview || "/placeholder.svg"} alt="Preview" className="w-full h-full object-cover rounded-lg" />
+          <Image src={preview || "/placeholder.svg"} alt="Preview" className="w-full h-full object-cover rounded-lg " width={100} height={100}/>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="flex flex-col items-center bg-[#0E464F] w-[240px] h-[240px] p-4 rounded-2xl border border-[#197686]">
           <div className="w-16 h-16 mx-auto rounded-full bg-muted flex items-center justify-center">
             <ImageIcon className="w-8 h-8 text-muted-foreground" />
           </div>

@@ -23,7 +23,7 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
   ]
 
   return (
-    <div className="max-w-2xl mx-auto p-12 border border-[#197686] rounded-2xl">
+    <div className="max-w-2xl mx-auto p-12 border border-[#197686] rounded-2xl bg-[#041E23]">
      <div className="mb-8">
       <div className="text-centerflex flex justify-between items-center">
         <h1 className="text-4xl font-bold mb-2">Ticket Selection</h1>
@@ -31,7 +31,7 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
       </div>
       <ProgressBar currentStep={1} totalSteps={3} />
       </div>
-      <Card className="bg-card border-[#197686] border">
+      <Card className="bg-[#08252B] border-[#197686] border">
         <CardContent className="p-6">
           <div className="border-[#197686] text-center mb-8 bg-[radial-gradient(57.42%_106.59%_at_14.02%_32.06%,rgba(36,160,181,0.20)_0%,rgba(36,160,181,0.00)_100%),rgba(10,12,17,0.10)] p-4 rounded-2xl border">
             <h2 className="text-2xl font-bold mb-2">Techember Fest &apos;25</h2>
@@ -41,13 +41,13 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
           </div>
           <div className="h-[2px] bg-[#197686] w-full my-8"></div>
           <h3 className="text-xl font-bold mb-4">Select Ticket Type:</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 border-[#197686] p-4 rounded-2xl border">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 border-[#197686] p-4 rounded-2xl border bg-[#052228]">
     
             {tickets.map((ticket) => (
               <Button
                 key={ticket.type}
                 variant={ticketType === ticket.type ? "default" : "outline"}
-                className="h-auto p-6 flex flex-col gap-2 rounded-2xl border border-[#197686]"
+                className="h-auto p-3 flex flex-col gap-2 rounded-2xl border border-[#197686]"
                 onClick={() => setTicketType(ticket.type)}
               >
                 <span className="text-xl font-bold">{ticket.price}</span>
@@ -65,7 +65,7 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
                 min="1"
                 value={quantity}
                 onChange={(e) => setQuantity(Number.parseInt(e.target.value))}
-                className="mt-1"
+                className="mt-1 border-[#197686] border"
               />
             </div>
           </div>

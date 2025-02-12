@@ -3,6 +3,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ProgressBar } from "./progress-bar"
 import type { TicketFormData } from "../types/ticket"
+import Image from "next/image"
 
 interface TicketProps {
   data: TicketFormData
@@ -28,13 +29,15 @@ export function Ticket({ data, onReset }: TicketProps) {
 
           <div className="p-6 space-y-6">
             <div className="w-32 h-32 mx-auto rounded-lg overflow-hidden border-2 border-primary">
-              <img
+              <Image
                 src={
                   data.avatarUrl ||
                   "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-MmgV4g6dzrkxrtUHb7UzfSdv8NxeaX.png"
                 }
                 alt="Attendee avatar"
                 className="w-full h-full object-cover"
+                width={128}
+                height={128}
               />
             </div>
 
@@ -44,11 +47,8 @@ export function Ticket({ data, onReset }: TicketProps) {
             </div>
 
             <div className="pt-4 border-t border-border">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-wqXAnYC0zrnEsDOloag85ffJcA5fOG.png"
-                alt="Barcode"
-                className="mx-auto w-full max-w-[200px]"
-              />
+             
+              
               <p className="text-center text-xs text-muted-foreground mt-2">
                 #TF25-{Math.random().toString(36).substr(2, 9)}
               </p>

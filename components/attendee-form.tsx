@@ -50,16 +50,18 @@ export function AttendeeForm({ onSubmit, onBack, initialData }: AttendeeFormProp
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <ProgressBar currentStep={2} totalSteps={3} />
-      <div className="text-center my-8">
+    <div className="max-w-2xl mx-auto p-12 border border-[#197686] rounded-2xl bg-[#041E23]">
+      <div className="mb-8">
+      <div className="text-center my-8 flex justify-between">
         <h1 className="text-4xl font-bold mb-2">Attendee Details</h1>
         <p className="text-xl text-muted-foreground">Step 2/3</p>
       </div>
-      <Card className="bg-card border-border">
+      <ProgressBar currentStep={2} totalSteps={3} />
+      </div>
+      <Card className="bg-[#08252B] border-[#197686] border">
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-2">
+            <div className=" bg-[#052228] p-4 rounded-2xl border border-[#197686] h-[200px]">
               <Label>Upload Profile Photo</Label>
               <ImageUpload
                 onImageUpload={(url) => setFormData({ ...formData, avatarUrl: url })}
@@ -79,7 +81,8 @@ export function AttendeeForm({ onSubmit, onBack, initialData }: AttendeeFormProp
                 type="text"
                 value={formData.fullName || ""}
                 onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                aria-describedby="fullName-error"
+                aria-describedby="fullName-error "
+                className="mt-1 border-[#197686] border"
               />
               {errors.fullName && (
                 <p className="text-destructive text-sm" id="fullName-error">
@@ -96,6 +99,7 @@ export function AttendeeForm({ onSubmit, onBack, initialData }: AttendeeFormProp
                 value={formData.email || ""}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 aria-describedby="email-error"
+                className="mt-1 border-[#197686] border"
               />
               {errors.email && (
                 <p className="text-destructive text-sm" id="email-error">
@@ -111,14 +115,15 @@ export function AttendeeForm({ onSubmit, onBack, initialData }: AttendeeFormProp
                 value={formData.specialRequest || ""}
                 onChange={(e) => setFormData({ ...formData, specialRequest: e.target.value })}
                 placeholder="Optional"
+                className="mt-1 border-[#197686] border"
               />
             </div>
 
-            <div className="flex justify-between pt-4">
-              <Button type="button" variant="outline" onClick={onBack}>
+            <div className="mt-6 flex justify-between gap-4">
+              <Button type="button" variant="outline" className="hover:text-white w-full mt-6 bg-transparent border border-[#197686] text-[#197686]" onClick={onBack}>
                 Back
               </Button>
-              <Button type="submit">Next</Button>
+              <Button type="submit" className="w-full mt-6 text-white">Get My Free Ticket</Button>
             </div>
           </form>
         </CardContent>

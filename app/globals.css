@@ -60,6 +60,10 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .background-card {
+    background-color: #0e464f;
+    background-image: linear-gradient(0deg, #0e464f 0% #02191d 48%);
+  }
 }
 
 @layer base {

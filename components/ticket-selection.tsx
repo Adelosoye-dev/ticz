@@ -33,12 +33,12 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
       </div>
       <Card className="bg-[#08252B] border-[#197686] border">
         <CardContent className="p-6">
-          <div className="border-[#197686] text-center mb-8 bg-[radial-gradient(57.42%_106.59%_at_14.02%_32.06%,rgba(36,160,181,0.20)_0%,rgba(36,160,181,0.00)_100%),rgba(10,12,17,0.10)] p-4 rounded-2xl border">
+        <div className="background-image border-[#197686] text-center mb-8 p-4 rounded-2xl border">
             <h2 className="text-2xl font-bold mb-2">Techember Fest &apos;25</h2>
             <p className="text-sm text-muted-foreground">Join us for an unforgettable experience</p>
             <p className="text-sm text-muted-foreground mt-1">TekVibez! Secure your spot now.</p>
-            <p className="text-sm text-muted-foreground mt-1">shomolu || March 1, 2025 | 7:00 AM</p>
-          </div>
+            <p className="text-sm text-muted-foreground mt-1"><span className="text-[#ff2d55]">📍</span>shomolu || March 1, 2025 | 7:00 AM</p>
+        </div>
           <div className="h-[2px] bg-[#197686] w-full my-8"></div>
           <h3 className="text-xl font-bold mb-4">Select Ticket Type:</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 border-[#197686] p-4 rounded-2xl border bg-[#052228]">

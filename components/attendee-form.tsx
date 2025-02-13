@@ -123,7 +123,7 @@ export function AttendeeForm({ onSubmit, onBack, initialData }: AttendeeFormProp
               <Button type="button" variant="outline" className="hover:text-white w-full mt-6 bg-transparent border border-[#197686] text-[#197686]" onClick={onBack}>
                 Back
               </Button>
-              <Button type="submit" className="w-full mt-6 text-white">Get My Free Ticket</Button>
+              <Button  className="w-full mt-6 text-white">Get My Free Ticket</Button>
             </div>
           </form>
         </CardContent>

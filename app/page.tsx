@@ -16,7 +16,7 @@ export default function Page() {
     const savedData = localStorage.getItem("ticketFormData")
     if (savedData) {
       setFormData(JSON.parse(savedData))
-      // If we have complete data, move to the ticket view
+      
       const parsedData = JSON.parse(savedData)
       if (parsedData.fullName && parsedData.email && parsedData.avatarUrl && parsedData.ticketType) {
         setStep(3)
@@ -32,6 +32,7 @@ export default function Page() {
   }
 
   const handleFormSubmit = (data: TicketFormData) => {
+    
     setFormData(data)
     localStorage.setItem("ticketFormData", JSON.stringify(data))
     setStep(3)

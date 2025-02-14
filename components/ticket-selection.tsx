@@ -16,6 +16,11 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
   const [quantity, setQuantity] = useState(1)
   const [ticketType, setTicketType] = useState<TicketFormData["ticketType"]>("free")
 
+  const  handleQuantity = () => {
+    localStorage.setItem("quantity" ,  JSON.stringify(quantity))
+    onNext(ticketType, quantity)
+  }
+
   const tickets = [
     { type: "free" as const, price: "Free", title: "REGULAR ACCESS", description: "20/52" },
     { type: "vip" as const, price: "$150", title: "VIP ACCESS", description: "20/52" },
@@ -34,7 +39,7 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
       <Card className="bg-[#08252B] border-[#197686] border">
         <CardContent className="p-6">
         <div className="background-image border-[#197686] text-center mb-8 p-4 rounded-2xl border">
-            <h2 className="text-2xl font-bold mb-2 text-[50px] leading-none text-grey-98 font-road-rage">Techember Fest &apos;&apos;25</h2>
+            <h2 className="text-2xl font-bold mb-2 text-[40px] leading-none text-grey-98 font-road-rage">Techember Fest &apos;&apos;25</h2>
             <p className="text-sm text-muted-foreground">Join us for an unforgettable experience</p>
             <p className="text-sm text-muted-foreground mt-1">TekVibez! Secure your spot now.</p>
             <p className="text-sm text-muted-foreground mt-1"><span className="text-[#ff2d55]">📍</span>shomolu || March 1, 2025 | 7:00 AM</p>
@@ -73,7 +78,7 @@ export function TicketSelection({ onNext }: TicketSelectionProps) {
           <Button className="hover:text-white w-full mt-6 bg-transparent border border-[#197686] text-[#197686]" onClick={() => setTicketType("free")}>
             cancel
           </Button>
-          <Button onClick={() => onNext(ticketType, quantity)} className="w-full mt-6 text-white">
+          <Button onClick={handleQuantity} className="w-full mt-6 text-white">
             Next
           </Button>
           </div>

@@ -1,5 +1,5 @@
 export interface TicketFormData {
-  ticketCount: number
+  
   fullName: string
   email: string
   avatarUrl: string

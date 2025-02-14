@@ -1,6 +1,5 @@
 "use client";
 
-
 import Image from "next/image";
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,14 +7,13 @@ import html2canvas from "html2canvas";
 import type { TicketFormData } from "../types/ticket";
 import { ProgressBar } from "./progress-bar";
 
-
 interface TicketProps {
   data: TicketFormData;
   onReset: () => void;
+  quantity: number;
 }
 
-export function Ticket({ data, onReset }: TicketProps){
-
+export function Ticket({ data, onReset, quantity }: TicketProps) {
   const downloadTicket = async () => {
     const ticketElement = document.getElementById("ticket-card");
     if (ticketElement) {
@@ -84,9 +82,9 @@ export function Ticket({ data, onReset }: TicketProps){
                   />
                 </div>
               </div>
-              
-              <div className="gap-x-4 gap-y-6 grid grid-cols-2 bg-[#08343C]  p-4 rounded-2xl border border-[#133D44] text-sm ">
-                <div className="space-y-1 border-b border-[#133D44] border-r p-2" >
+
+              <div className="gap-x-4 gap-y-6 grid grid-cols-1 md:grid-cols-2 bg-[#08343C] p-4 rounded-2xl border border-[#133D44] text-sm">
+                <div className="space-y-1 border-b md:border-r border-[#133D44] p-2">
                   <p className="text-gray-500">Enter your name</p>
                   <p className="font-medium text-gray-300">{data.fullName}</p>
                 </div>
@@ -94,19 +92,19 @@ export function Ticket({ data, onReset }: TicketProps){
                   <p className="text-gray-500">Enter your email *</p>
                   <p className="font-medium text-gray-300">{data.email}</p>
                 </div>
-                <div className="space-y-1 border-b border-[#133D44] border-r p-2">
+                <div className="space-y-1 border-b md:border-r border-[#133D44] p-2">
                   <p className="text-gray-500">Ticket Type:</p>
                   <p className="font-medium text-gray-300">{data.ticketType}</p>
                 </div>
                 <div className="space-y-1 border-b border-[#133D44] p-2">
                   <p className="text-gray-500">Ticket for:</p>
                   <p className="font-medium text-gray-300">
-                    {data.ticketCount}
+                    {quantity} 
                   </p>
                 </div>
-                <div className="space-y-2 col-span-2">
+                <div className="space-y-2 col-span-1 md:col-span-2">
                   <p className="text-sm text-gray-500">Special requests?</p>
-                  <div className=" rounded-lg p-4 min-h-[80px] text-sm text-gray-300">
+                  <div className="rounded-lg p-4 min-h-[80px] text-sm text-gray-300 bg-[#0A2E36]">
                     {data.specialRequest}
                   </div>
                 </div>
@@ -148,4 +146,3 @@ export function Ticket({ data, onReset }: TicketProps){
     </div>
   );
 }
-

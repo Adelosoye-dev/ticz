@@ -11,9 +11,14 @@ import { ThemeProvider } from "@/components/theme-provider"
 export default function Page() {
   const [step, setStep] = useState(1)
   const [formData, setFormData] = useState<Partial<TicketFormData>>({})
+  const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
     const savedData = localStorage.getItem("ticketFormData")
+    const numberOfTicket = localStorage.getItem("quantity")
+    if (numberOfTicket) {
+      setQuantity(JSON.parse(numberOfTicket))
+    }
     if (savedData) {
       setFormData(JSON.parse(savedData))
       
@@ -49,7 +54,7 @@ export default function Page() {
       <Layout>
         {step === 1 && <TicketSelection onNext={handleTicketSelect} />}
         {step === 2 && <AttendeeForm onSubmit={handleFormSubmit} onBack={() => setStep(1)} initialData={formData} />}
-        {step === 3 && <Ticket data={formData as TicketFormData} onReset={handleReset} />}
+        {step === 3 && <Ticket data={formData as TicketFormData} onReset={handleReset} quantity={quantity} />}
       </Layout>
     </ThemeProvider>
   )

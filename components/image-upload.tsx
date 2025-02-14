@@ -73,28 +73,28 @@ export function ImageUpload({ onImageUpload, value }: ImageUploadProps) {
     >
       <input {...getInputProps()} />
       <div className="flex justify-center w-full isolate items-center relative">
-        <div className="h-[200px] w-full absolute -z-10 bg-black" />
+        <div className={`h-[200px] w-full absolute -z-10 ${preview ? "bg-transparent" : "bg-black"}`} />
         {preview ? (
-          <div className="relative w-32 h-32 z-10 mx-auto">
-            <Image
-              src={preview || "/placeholder.svg"}
-              alt="Preview"
-              className="w-full h-full object-cover rounded-lg"
-              width={100}
-              height={100}
-            />
+          <div className="relative w-32 h-32 z-10 mx-auto ">
+        <Image
+          src={preview || "/placeholder.svg"}
+          alt="Preview"
+          className="w-full h-full object-cover rounded-lg"
+          width={100}
+          height={100}
+        />
           </div>
         ) : (
           <div className="flex flex-col justify-center relative items-center bg-[#0E464F] w-[240px] h-[240px] p-4 rounded-2xl border border-[#197686]">
-            <div className="w-16 h-16 mx-auto rounded-full bg-muted flex items-center justify-center">
-              <ImageIcon className="w-8 h-8 text-muted-foreground" />
-            </div>
-            <div className="space-y-2 ">
-              <p className="text-sm font-medium">
-                {isDragActive ? "Drop your image here" : "Drag & drop your profile photo"}
-              </p>
-              <p className="text-xs text-muted-foreground">or click to select a file</p>
-            </div>
+        <div className="w-16 h-16 mx-auto rounded-full bg-muted flex items-center justify-center">
+          <ImageIcon className="w-8 h-8 text-muted-foreground" />
+        </div>
+        <div className="space-y-2 ">
+          <p className="text-sm font-medium">
+            {isDragActive ? "Drop your image here" : "Drag & drop your profile photo"}
+          </p>
+          <p className="text-xs text-muted-foreground">or click to select a file</p>
+        </div>
           </div>
         )}
       </div>

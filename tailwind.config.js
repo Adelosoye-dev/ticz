@@ -30,6 +30,9 @@ module.exports = {
         "gradient-radial": "radial-gradient(circle at center, rgba(45, 212, 191, 0.1) 0%, transparent 70%)",
         "gradient-card": "linear-gradient(180deg, hsl(200, 45%, 8%) 0%, hsl(200, 50%, 3%) 100%)",
       },
+      fontFamily: {
+        'road-rage': ['"Road Rage"', 'sans-serif'],
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

@@ -1212,6 +1212,9 @@ video {
 .font-\[400\] {
   font-weight: 400;
 }
+.font-normal {
+  font-weight: 400;
+}
 .leading-none {
   line-height: 1;
 }
